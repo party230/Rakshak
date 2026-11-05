@@ -1,0 +1,796 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Rakshak Mockups</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#1A4FA0; --primary-soft:#E8EFFA;
+  --safe:#1B7F3B; --safe-bg:#E7F5EC;
+  --warn:#8A5A00; --warn-bg:#FFF4CC; --warn-line:#F2B705;
+  --scam:#C62828; --scam-bg:#FDECEC;
+  --ink:#111827; --muted:#4B5563; --line:#D1D5DB; --bg:#FFFFFF; --page:#EEF1F5;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+svg{width:24px;height:24px}
+body{font-family:"Noto Sans","Noto Sans Devanagari",sans-serif;background:var(--page);color:var(--ink)}
+.sheet{padding:40px 40px 48px;background:var(--page);width:max-content}
+.sheet h2{font-size:30px;margin-bottom:6px}
+.sheet .sub{font-size:17px;color:var(--muted);margin-bottom:28px}
+.row{display:flex;gap:36px;align-items:flex-start}
+.frame{display:flex;flex-direction:column;align-items:center;gap:14px}
+.label{font-size:17px;font-weight:700;color:#374151;text-align:center;max-width:360px}
+.label small{display:block;font-weight:400;color:var(--muted);font-size:14px;margin-top:2px}
+
+/* phone */
+.phone{width:380px;height:800px;border:10px solid #14171c;border-radius:46px;background:var(--bg);overflow:hidden;display:flex;flex-direction:column;position:relative}
+.status{height:32px;flex:none;display:flex;justify-content:space-between;align-items:center;padding:0 24px;font-size:13px;font-weight:700}
+.body{flex:1;display:flex;flex-direction:column;gap:16px;padding:12px 20px 18px;overflow:hidden;min-height:0}
+.grow{flex:1}
+.topbar{display:flex;align-items:center;gap:10px;min-height:44px}
+.topbar .t{font-size:24px;font-weight:800}
+.iconbtn{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--ink)}
+.logo{display:flex;align-items:center;gap:8px;color:var(--primary);font-weight:800;font-size:24px}
+.logo svg{width:34px;height:34px}
+h1{font-size:28px;line-height:1.25;font-weight:800}
+p,.p{font-size:18px;line-height:1.45}
+.muted{color:var(--muted)}
+.center{text-align:center}
+
+/* buttons */
+.btn{width:100%;min-height:60px;border-radius:14px;font-size:20px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:10px;border:2px solid transparent;padding:0 16px;text-align:center}
+.btn svg{width:26px;height:26px;flex:none}
+.b-primary{background:var(--primary);color:#fff}
+.b-outline{background:#fff;color:var(--primary);border-color:var(--primary)}
+.b-danger{background:var(--scam);color:#fff}
+.b-safe{background:var(--safe);color:#fff}
+.b-white{background:#fff;color:var(--scam)}
+.b-ghostw{background:transparent;color:#fff;border-color:#fff}
+.b-big{min-height:96px;font-size:26px;border-radius:18px;flex-direction:column;gap:2px}
+.b-big small{font-size:17px;font-weight:600;opacity:.95}
+
+/* cards */
+.card{border:2px solid var(--line);border-radius:16px;padding:16px}
+.status-card{border-radius:18px;padding:20px;display:flex;gap:16px;align-items:center}
+.sc-safe{background:var(--safe-bg);border:2px solid var(--safe);color:var(--safe)}
+.sc-alert{background:var(--scam-bg);border:2px solid var(--scam);color:var(--scam)}
+.status-card svg{width:64px;height:64px;flex:none}
+.status-card .h{font-size:26px;font-weight:800;line-height:1.2}
+.status-card .s{font-size:18px;color:var(--ink);margin-top:4px}
+
+/* tabs */
+.tabs{height:78px;flex:none;border-top:2px solid #E5E7EB;display:flex;background:#fff}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:15px;font-weight:600;color:#6B7280}
+.tab svg{width:28px;height:28px}
+.tab.on{color:var(--primary)}
+.tab.on span{border-bottom:3px solid var(--primary)}
+
+/* inputs */
+.field{display:flex;flex-direction:column;gap:6px}
+.field .l{font-size:18px;font-weight:700}
+.input{min-height:60px;border:2px solid #9CA3AF;border-radius:14px;padding:14px 16px;font-size:20px;display:flex;align-items:center;gap:8px}
+.input.ph{color:#6B7280}
+.otp{display:flex;gap:8px;justify-content:space-between}
+.otp div{width:48px;height:62px;border:2px solid #9CA3AF;border-radius:12px;font-size:28px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.otp div.f{border-color:var(--primary);background:var(--primary-soft)}
+
+/* list rows */
+.rowitem{min-height:68px;border-bottom:2px solid #EEF0F3;display:flex;align-items:center;gap:14px;padding:6px 2px}
+.rowitem svg.ic{width:28px;height:28px;color:var(--primary);flex:none}
+.rowitem .tx{flex:1}
+.rowitem .tx b{font-size:19px;display:block}
+.rowitem .tx span{font-size:17px;color:var(--muted)}
+.rowitem svg.ch{width:22px;height:22px;color:#9CA3AF}
+
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:5px 12px;font-size:16px;font-weight:800}
+.pill svg{width:18px;height:18px}
+.p-safe{background:var(--safe-bg);color:var(--safe)}
+.p-alert{background:var(--scam-bg);color:var(--scam)}
+.p-warn{background:var(--warn-bg);color:var(--warn)}
+
+/* verdict */
+.verdict{border-radius:20px;padding:22px 20px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.verdict svg.big{width:84px;height:84px}
+.verdict .w{font-size:40px;font-weight:800;letter-spacing:.5px}
+.v-scam{background:var(--scam-bg);border:3px solid var(--scam);color:var(--scam)}
+.v-warn{background:var(--warn-bg);border:3px solid var(--warn-line);color:var(--warn)}
+.v-safe{background:var(--safe-bg);border:3px solid var(--safe);color:var(--safe)}
+.verdict p{color:var(--ink)}
+.todo{background:#fff;border-radius:14px;padding:14px 16px;font-size:19px;font-weight:800;color:var(--ink);width:100%;display:flex;gap:10px;align-items:flex-start;text-align:left}
+.todo svg{width:26px;height:26px;flex:none;margin-top:1px}
+
+/* chat */
+.never{background:var(--primary-soft);color:var(--primary);font-size:16px;font-weight:700;padding:10px 14px;border-radius:12px;display:flex;gap:8px;align-items:center}
+.never svg{width:22px;height:22px;flex:none}
+.bubble{max-width:86%;padding:12px 14px;border-radius:18px;font-size:18px;line-height:1.4}
+.me{align-self:flex-end;background:var(--primary);color:#fff;border-bottom-right-radius:6px}
+.bot{align-self:flex-start;background:#F1F3F6;border-bottom-left-radius:6px}
+.bot.red{background:var(--scam-bg);border:2px solid var(--scam)}
+.spk{display:flex;align-items:center;gap:6px;margin-top:8px;color:var(--primary);font-weight:700;font-size:16px}
+.spk svg{width:22px;height:22px}
+.composer{display:flex;gap:10px;align-items:center;padding:10px 16px 16px;border-top:2px solid #EEF0F3}
+.composer .input{flex:1;min-height:56px;font-size:18px}
+.round{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none}
+.round svg{width:28px;height:28px}
+
+/* call */
+.call{background:#0E1726;color:#fff}
+.call .status{color:#fff}
+.callnum{font-size:30px;font-weight:800}
+.caps{background:rgba(255,255,255,.08);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:10px;font-size:18px;line-height:1.4}
+.caps .who{font-size:14px;font-weight:800;opacity:.7;letter-spacing:.5px}
+.hl{background:#F2B705;color:#111;border-radius:4px;padding:0 3px}
+.banner-warn{background:var(--warn-bg);border:3px solid var(--warn-line);color:#3D2A00;border-radius:16px;padding:12px 14px;display:flex;gap:10px;align-items:flex-start}
+.banner-warn svg{width:30px;height:30px;color:var(--warn);flex:none}
+.banner-warn b{font-size:19px;display:block}
+.banner-warn span{font-size:17px}
+.full-red{background:var(--scam);color:#fff}
+.full-red .status{color:#fff}
+.full-red p{color:#fff}
+.full-red .instr{background:#fff;color:var(--scam);border-radius:16px;padding:16px;font-size:22px;font-weight:800;line-height:1.35}
+.reading{display:inline-flex;gap:8px;align-items:center;font-size:17px;font-weight:700;background:rgba(255,255,255,.18);padding:8px 14px;border-radius:999px;align-self:center}
+.reading svg{width:22px;height:22px}
+
+.badge-safe{display:inline-flex;gap:8px;align-items:center;background:rgba(27,127,59,.25);border:1.5px solid #4ADE80;color:#BBF7D0;border-radius:999px;padding:8px 14px;font-size:16px;font-weight:700}
+.badge-safe svg{width:20px;height:20px}
+
+.amount{font-size:44px;font-weight:800}
+.kv{display:flex;flex-direction:column;gap:2px;padding:10px 0;border-bottom:2px solid #EEF0F3}
+.kv span{font-size:16px;color:var(--muted);font-weight:600}
+.kv b{font-size:20px}
+.redbanner{background:var(--scam);color:#fff;border-radius:14px;padding:12px 14px;display:flex;gap:10px;align-items:flex-start;font-size:18px;font-weight:700;line-height:1.35}
+.redbanner svg{width:28px;height:28px;flex:none}
+.info{background:var(--primary-soft);border-radius:14px;padding:12px 14px;display:flex;gap:10px;font-size:17px;color:#1E3A6B;line-height:1.4}
+.info svg{width:24px;height:24px;flex:none;color:var(--primary)}
+
+.step{display:flex;gap:12px;border:2px solid var(--line);border-radius:16px;padding:12px 14px}
+.step .n{width:36px;height:36px;border-radius:50%;background:var(--primary);color:#fff;font-weight:800;font-size:18px;display:flex;align-items:center;justify-content:center;flex:none}
+.step .c{flex:1;display:flex;flex-direction:column;gap:8px}
+.step b{font-size:19px}
+.step .mini{min-height:56px;font-size:18px}
+
+.choice{border:2px solid var(--line);border-radius:16px;padding:14px 16px;display:flex;gap:14px;align-items:flex-start}
+.choice.on{border:3px solid var(--primary);background:var(--primary-soft)}
+.radio{width:28px;height:28px;border-radius:50%;border:3px solid #9CA3AF;flex:none;margin-top:2px}
+.choice.on .radio{border-color:var(--primary);box-shadow:inset 0 0 0 5px #fff;background:var(--primary)}
+.choice b{font-size:20px;display:block}
+.choice span{font-size:17px;color:var(--muted);line-height:1.4}
+
+.person{display:flex;align-items:center;gap:12px;border:2px solid var(--line);border-radius:16px;padding:12px 14px}
+.avatar{width:52px;height:52px;border-radius:50%;background:var(--primary-soft);color:var(--primary);font-weight:800;font-size:22px;display:flex;align-items:center;justify-content:center;flex:none}
+.person .tx{flex:1}
+.person .tx b{font-size:19px;display:block}
+.person .tx span{font-size:16px;color:var(--muted)}
+.linkbtn{font-size:17px;font-weight:800;color:var(--scam);padding:8px 10px;border:2px solid var(--scam);border-radius:10px}
+
+.code{font-size:44px;font-weight:800;letter-spacing:8px;color:var(--primary);text-align:center}
+.toggle{width:58px;height:34px;border-radius:999px;background:var(--safe);position:relative;flex:none}
+.toggle:after{content:"";position:absolute;right:4px;top:4px;width:26px;height:26px;border-radius:50%;background:#fff}
+.toggle.off{background:#9CA3AF}.toggle.off:after{left:4px;right:auto}
+.stepper{display:flex;align-items:center;gap:8px}
+.stepper .sb{width:48px;height:48px;border-radius:12px;border:2px solid var(--primary);color:var(--primary);font-size:26px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.stepper .val{flex:1;text-align:center;font-size:24px;font-weight:800}
+.notif{position:absolute;left:10px;right:10px;top:40px;background:#fff;border-radius:18px;box-shadow:0 8px 30px rgba(0,0,0,.25);padding:14px;display:flex;gap:12px;z-index:5}
+.full-red .sheetpop p{color:var(--muted)}
+.dim{position:absolute;inset:0;background:rgba(0,0,0,.45)}
+.sheetpop{color:var(--ink);position:absolute;left:0;right:0;bottom:0;background:#fff;border-radius:26px 26px 0 0;padding:22px 20px 26px;display:flex;flex-direction:column;gap:14px;z-index:4}
+.fade{position:absolute;left:0;right:0;bottom:78px;height:60px;background:linear-gradient(transparent,#fff)}
+.hi{font-family:"Noto Sans Devanagari","Noto Sans",sans-serif}
+</style>
+</head>
+<body>
+
+<!-- =============== SHEET 1: GETTING STARTED =============== -->
+<section class="sheet" id="sheet1">
+  <h2>1 · Getting started (Senior and Family)</h2>
+  <div class="sub">Same first screens for both roles. Family members get one extra step: the invite code.</div>
+  <div class="row">
+
+    <div class="frame"><div class="phone">
+      <div class="status"><span>9:41</span><span>●●● 100%</span></div>
+      <div class="body" style="justify-content:center;gap:28px">
+        <div class="center" style="color:var(--primary)"><i data-i="shieldcheck" style="width:96px;height:96px;display:inline-block"></i></div>
+        <div class="center"><h1 style="font-size:34px;color:var(--primary)">Rakshak · <span class="hi">रक्षक</span></h1></div>
+        <div class="center"><p class="hi" style="font-size:22px;font-weight:700">अपनी भाषा चुनें</p><p style="font-size:22px;font-weight:700">Choose your language</p></div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div class="btn b-outline b-big hi" style="font-size:30px">हिन्दी</div>
+          <div class="btn b-outline b-big" style="font-size:30px">English</div>
+        </div>
+        <p class="center muted" style="font-size:17px">You can change this later in Settings.</p>
+      </div>
+    </div><div class="label">A1 · Language select</div></div>
+
+    <div class="frame"><div class="phone">
+      <div class="status"><span>9:41</span><span>●●● 100%</span></div>
+      <div class="body" style="gap:20px">
+        <div class="topbar"><div class="iconbtn"><i data-i="back"></i></div></div>
+        <h1>Who is using this phone?</h1>
+        <div class="card" style="border:3px solid var(--primary);display:flex;gap:14px;align-items:center;padding:20px">
+          <i data-i="shieldcheck" style="width:60px;height:60px;color:var(--primary);flex:none"></i>
+          <div><b style="font-size:22px">Keep me safe</b><p class="muted">I want help with scam calls and messages.</p></div>
+        </div>
+        <div class="card" style="border:3px solid var(--primary);display:flex;gap:14px;align-items:center;padding:20px">
+          <i data-i="users" style="width:60px;height:60px;color:var(--primary);flex:none"></i>
+          <div><b style="font-size:22px">I look after family</b><p class="muted">I want alerts when my parent may be in danger.</p></div>
+        </div>
+        <div class="grow"></div>
+        <p class="center muted" style="font-size:17px">Tap one to continue.</p>
+      </div>
+    </div><div class="label">A2 · Role select<small>Senior = "Keep me safe", Family = "I look after family"</small></div></div>
+
+    <div class="frame"><div class="phone">
+      <div class="status"><span>9:41</span><span>●●● 100%</span></div>
+      <div class="body" style="gap:20px">
+        <div class="topbar"><div class="iconbtn"><i data-i="back"></i></div></div>
+        <h1>Your mobile number</h1>
+        <p class="muted">We will send you a code by SMS.</p>
+        <div class="field"><div class="l">Mobile number</div>
+          <div class="input" style="font-size:24px;font-weight:700"><span style="color:var(--muted)">+91</span> 98765 43210</div></div>
+        <div class="field"><div class="l">Your name</div>
+          <div class="input" style="font-size:22px">Kamla Sharma</div></div>
+        <div class="grow"></div>
+        <div class="btn b-primary">Send code</div>
+      </div>
+    </div><div class="label">A3 · Phone login</div></div>
+
+    <div class="frame"><div class="phone">
+      <div class="status"><span>9:41</span><span>●●● 100%</span></div>
+      <div class="body" style="gap:20px">
+        <div class="topbar"><div class="iconbtn"><i data-i="back"></i></div></div>
+        <h1>Enter the code</h1>
+        <p class="muted">We sent a 6-digit code to +91 98765 43210.</p>
+        <div class="otp"><div class="f">4</div><div class="f">8</div><div class="f">2</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div></div>
+        <div class="info"><i data-i="lock"></i><span>Type this code only here. Never tell it to anyone on a call.</span></div>
+        <p class="muted center">Send again in 0:24</p>
+        <div class="grow"></div>
+        <div class="btn b-primary">Continue</div>
+      </div>
+    </div><div class="label">A4 · Code (OTP) entry</div></div>
+
+    <div class="frame"><div class="phone">
+      <div class="status"><span>9:41</span><span>●●● 100%</span></div>
+      <div class="body" style="gap:20px">
+        <div class="topbar"><div class="iconbtn"><i data-i="back"></i></div></div>
+        <h1>Link to your parent</h1>
+        <p class="muted">Ask them to open Rakshak, go to <b style="color:var(--ink)">Settings → My family</b>, and read out the 6-digit code.</p>
+        <div class="otp"><div class="f">4</div><div class="f">8</div><div class="f">2</div><div class="f">9</div><div class="f">1</div><div class="f">3</div></div>
+        <div class="person"><div class="avatar">K</div><div class="tx"><b>Kamla Sharma</b><span>+91 98765 43210</span></div><i data-i="checkc" style="width:30px;height:30px;color:var(--safe)"></i></div>
+        <div class="grow"></div>
+        <div class="btn b-primary">Link</div>
+        <p class="center muted" style="font-size:17px">You can link more than one parent.</p>
+      </div>
+    </div><div class="label">F1 · Enter invite code (Family only)<small>Shows who the code belongs to before linking</small></div></div>
+
+  </div>
+</section>
+
+<!-- =============== SHEET 2: SENIOR HOME + CHECK =============== -->
+<section class="sheet" id="sheet2">
+  <h2>2 · Senior: Home and Check a message</h2>
+  <div class="sub">Tabs: Home · Check · Pay · Settings. "Talk to Rakshak" opens from Home. Tap the logo 5 times for test mode.</div>
+  <div class="row">
+
+    <div class="frame"><div class="phone">
+      <div class="status"><span>9:41</span><span>●●● 100%</span></div>
+      <div class="body">
+        <div class="topbar" style="justify-content:space-between"><div class="logo"><i data-i="shieldcheck"></i>Rakshak</div></div>
+        <p style="font-size:22px;font-weight:700">Namaste, Kamla ji</p>
+        <div class="status-card sc-safe"><i data-i="shieldcheck"></i><div><div class="h">You are protected</div><div class="s">No danger found today.</div></div></div>
+        <div class="btn b-danger b-big"><span style="display:flex;gap:10px;align-items:center"><i data-i="phone"></i>Emergency</span><small>Calls Rahul right away</small></div>
+        <div class="btn b-primary"><i data-i="search"></i>Check a message</div>
+        <div class="btn b-outline"><i data-i="msg"></i>Talk to Rakshak</div>
+      </div>
+      <div class="tabs"><div class="tab on"><i data-i="home"></i><span>Home</span></div><div class="tab"><i data-i="search"></i><span>Check</span></div><div class="tab"><i data-i="rupee"></i><span>Pay</span></div><div class="tab"><i data-i="settings"></i><span>Settings</span></div></div>
+    </div><div class="label">S1 · Home (English)</div></div>
+
+    <div class="frame"><div class="phone hi">
+      <div class="status"><span>9:41</span><span>●●● 100%</span></div>
+      <div class="body">
+        <div class="topbar"><div class="logo"><i data-i="shieldcheck"></i>रक्षक</div></div>
+        <p style="font-size:22px;font-weight:700">नमस्ते, कमला जी</p>
+        <div class="status-card sc-alert"><i data-i="alert"></i><div><div class="h">सावधान रहें</div><div class="s">अभी एक खतरे वाली कॉल आई थी। परिवार को बता दिया गया है।</div></div></div>
+        <div class="btn b-danger b-big"><span style="display:flex;gap:10px;align-items:center"><i data-i="phone"></i>इमरजेंसी</span><small>राहुल को तुरंत कॉल करें</small></div>
+        <div class="btn b-primary"><i data-i="search"></i>मैसेज जाँचें</div>
+        <div class="btn b-outline"><i data-i="msg"></i>रक्षक से बात करें</div>
+      </div>
+      <div class="tabs"><div class="tab on"><i data-i="home"></i><span>होम</span></div><div class="tab"><i data-i="search"></i><span>जाँचें</span></div><div class="tab"><i data-i="rupee"></i><span>भुगतान</span></div><div class="tab"><i data-i="settings"></i><span>सेटिंग</span></div></div>
+    </div><div class="label">S1 · Home (Hindi, alert state)<small>Status card turns red until family marks it resolved</small></div></div>
+
+    <div class="frame"><div class="phone">
+      <div class="status"><span>9:41</span><span>●●● 100%</span></div>
+      <div class="body">
+        <h1>Check a message</h1>
+        <p class="muted">Got a message, link or photo that worries you? Put it here.</p>
+        <div class="input" style="min-height:190px;align-items:flex-start;font-size:18px;line-height:1.45">Dear customer, your SBI account will be blocked today. Update KYC now: http://sbi-kyc-update.in/verify</div>
+        <div style="display:flex;gap:10px">
+          <div class="btn b-outline" style="font-size:18px"><i data-i="clip"></i>Paste</div>
+          <div class="btn b-outline" style="font-size:18px"><i data-i="image"></i>Photo</div>
+        </div>
+        <div class="info"><i data-i="share"></i><span>Tip: In WhatsApp, press and hold a message, tap <b>Share</b>, then pick <b>Rakshak</b>.</span></div>
+        <div class="grow"></div>
+        <div class="btn b-primary">Check now</div>
+      </div>
+      <div class="tabs"><div class="tab"><i data-i="home"></i><span>Home</span></div><div class="tab on"><i data-i="search"></i><span>Check</span></div><div class="tab"><i data-i="rupee"></i><span>Pay</span></div><div class="tab"><i data-i="settings"></i><span>Settings</span></div></div>
+    </div><div class="label">S2 · Scan<small>Paste text or a link, add a screenshot, or share in from any app</small></div></div>
+
+    <div class="frame"><div class="phone">
+      <div class="status"><span>9:41</span><span>●●● 100%</span></div>
+      <div class="body">
+        <div class="verdict v-scam">
+          <i data-i="xoct" class="big"></i>
+          <div class="w">SCAM</div>
+          <p>This link pretends to be SBI. The real SBI website is sbi.co.in.</p>
+          <div class="todo"><i data-i="hand" style="color:var(--scam)"></i>Do not click this link. Delete the message.</div>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;font-size:17px;color:var(--muted)"><i data-i="users" style="width:22px;height:22px"></i>Your family has been told.</div>
+        <div class="grow"></div>
+        <div class="btn b-outline"><i data-i="speaker"></i>Read aloud</div>
+        <div class="btn b-primary">Done</div>
+      </div>
+      <div class="tabs"><div class="tab"><i data-i="home"></i><span>Home</span></div><div class="tab on"><i data-i="search"></i><span>Check</span></div><div class="tab"><i data-i="rupee"></i><span>Pay</span></div><div class="tab"><i data-i="settings"></i><span>Settings</span></div></div>
+    </div><div class="label">S2 · Result: Scam</div></div>
+
+    <div class="frame"><div class="phone">
+      <div class="status"><span>9:41</span><span>●●● 100%</span></div>
+      <div class="body">
+        <div class="verdict v-warn">
+          <i data-i="alert" class="big"></i>
+          <div class="w">SUSPICIOUS</div>
+          <p>It offers a prize you never asked for and wants you to act fast.</p>
+          <div class="todo"><i data-i="hand" style="color:var(--warn)"></i>Do not reply. Ask your family first.</div>
+        </div>
+        <div class="grow"></div>
+        <div class="btn b-outline"><i data-i="speaker"></i>Read aloud</div>
+        <div class="btn b-primary">Done</div>
+      </div>
+      <div class="tabs"><div class="tab"><i data-i="home"></i><span>Home</span></div><div class="tab on"><i data-i="search"></i><span>Check</span></div><div class="tab"><i data-i="rupee"></i><span>Pay</span></div><div class="tab"><i data-i="settings"></i><span>Settings</span></div></div>
+    </div><div class="label">S2 · Result: Suspicious</div></div>
+
+    <div class="frame"><div class="phone">
+      <div class="status"><span>9:41</span><span>●●● 100%</span></div>
+      <div class="body">
+        <div class="verdict v-safe">
+          <i data-i="checkc" class="big"></i>
+          <div class="w">SAFE</div>
+          <p>This is a normal message from your gas agency. No link or payment asked.</p>
+          <div class="todo"><i data-i="checkc" style="color:var(--safe)"></i>You can read it. Still, never share your OTP.</div>
+        </div>
+        <div class="grow"></div>
+        <div class="btn b-outline"><i data-i="speaker"></i>Read aloud</div>
+        <div class="btn b-primary">Done</div>
+      </div>
+      <div class="tabs"><div class="tab"><i data-i="home"></i><span>Home</span></div><div class="tab on"><i data-i="search"></i><span>Check</span></div><div class="tab"><i data-i="rupee"></i><span>Pay</span></div><div class="tab"><i data-i="settings"></i><span>Settings</span></div></div>
+    </div><div class="label">S2 · Result: Safe</div></div>
+
+  </div>
+</section>
+
+<!-- =============== SHEET 3: ASSISTANT + CALLS =============== -->
+<section class="sheet" id="sheet3">
+  <h2>3 · Senior: Assistant and call warnings</h2>
+  <div class="sub">Calls are simulated: a realistic call screen plays the scammer's words as captions, and warnings appear live.</div>
+  <div class="row">
+
+    <div class="frame"><div class="phone">
+      <div class="status"><span>9:41</span><span>●●● 100%</span></div>
+      <div class="body" style="gap:12px;padding-bottom:8px">
+        <div class="topbar"><div class="iconbtn"><i data-i="back"></i></div><div class="t">Talk to Rakshak</div></div>
+        <div class="never"><i data-i="lock"></i>Rakshak will never ask for your OTP, PIN or password.</div>
+        <div class="bubble me">How do I add my son?</div>
+        <div class="bubble bot">Go to Settings and tap "My family". Read the 6-digit code to your son. He types it in his Rakshak app.
+          <div class="spk"><i data-i="speaker"></i>Listen</div></div>
+        <div class="bubble me">A CBI officer says I am under digital arrest.</div>
+        <div class="bubble bot red">This is a scam. Real police never arrest anyone on a call. Hang up now.
+          <div class="btn b-danger" style="min-height:56px;margin-top:10px;font-size:18px"><i data-i="phone"></i>Emergency</div></div>
+      </div>
+      <div class="composer"><div class="input ph">Type or speak…</div><div class="round b-primary" style="background:var(--primary);color:#fff"><i data-i="mic"></i></div></div>
+    </div><div class="label">S3 · Assistant chat<small>Big mic button for speaking; send arrow appears after typing</small></div></div>
+
+    <div class="frame"><div class="phone call">
+      <div class="status"><span>9:41</span><span>●●● 100%</span></div>
+      <div class="body" style="align-items:center;text-align:center;gap:14px">
+        <div style="height:60px"></div>
+        <p style="font-size:20px;opacity:.8">Incoming call</p>
+        <div class="avatar" style="width:110px;height:110px;font-size:44px;background:#24324A;color:#fff"><i data-i="user" style="width:56px;height:56px"></i></div>
+        <div class="callnum">+91 70XXX 41207</div>
+        <p style="opacity:.8">Unknown number · Delhi</p>
+        <div class="badge-safe"><i data-i="shieldcheck"></i>Rakshak is checking this call</div>
+        <div class="grow"></div>
+        <div style="display:flex;justify-content:space-around;width:100%;padding-bottom:30px">
+          <div class="center"><div class="round" style="width:78px;height:78px;background:#E53935;color:#fff"><i data-i="phone" style="transform:rotate(135deg)"></i></div><p style="margin-top:8px">Decline</p></div>
+          <div class="center"><div class="round" style="width:78px;height:78px;background:#2E9E4F;color:#fff"><i data-i="phone"></i></div><p style="margin-top:8px">Answer</p></div>
+        </div>
+      </div>
+    </div><div class="label">S4 · Simulated incoming call<small>Looks like the phone's own call screen</small></div></div>
+
+    <div class="frame"><div class="phone call">
+      <div class="status"><span>9:41</span><span>●●● 100%</span></div>
+      <div class="body" style="gap:14px">
+        <div class="banner-warn"><i data-i="alert"></i><div><b>Be careful</b><span>This caller is asking for money. Do not share any details.</span></div></div>
+        <div class="center"><div class="callnum" style="font-size:24px">+91 70XXX 41207</div><p style="opacity:.75">02:14</p></div>
+        <div class="caps">
+          <div><div class="who">CALLER</div>This is Inspector Sharma from <span class="hl">CBI</span> Mumbai.</div>
+          <div><div class="who">CALLER</div>Your Aadhaar is linked to a money laundering case.</div>
+          <div><div class="who">YOU</div>What? I don't know anything.</div>
+          <div><div class="who">CALLER</div>You must pay a security deposit <span class="hl">today</span>.</div>
+        </div>
+        <div class="grow"></div>
+        <div class="center" style="padding-bottom:14px"><div class="round" style="width:78px;height:78px;background:#E53935;color:#fff;margin:0 auto"><i data-i="phone" style="transform:rotate(135deg)"></i></div><p style="margin-top:8px">Hang up</p></div>
+      </div>
+    </div><div class="label">S4 · On call: Medium risk<small>Yellow banner at the top, captions below</small></div></div>
+
+    <div class="frame"><div class="phone full-red">
+      <div class="status"><span>9:41</span><span>●●● 100%</span></div>
+      <div class="body" style="gap:16px;text-align:center">
+        <div style="height:10px"></div>
+        <i data-i="xoct" style="width:100px;height:100px;margin:0 auto;display:block"></i>
+        <div style="font-size:44px;font-weight:800">STOP</div>
+        <p style="font-size:22px;font-weight:700">This is a scam call.</p>
+        <div class="instr">Hang up now. Real police never ask for money on a call.</div>
+        <div class="reading"><i data-i="speaker"></i>Reading aloud…</div>
+        <div class="grow"></div>
+        <div class="btn b-white" style="font-size:22px;min-height:66px"><i data-i="phone" style="transform:rotate(135deg)"></i>Hang up</div>
+        <div class="btn b-ghostw"><i data-i="phone"></i>Call Rahul</div>
+        <p style="font-size:17px;opacity:.95">Your family has been told.</p>
+      </div>
+    </div><div class="label">S5 · Warning: High risk (full screen)</div></div>
+
+    <div class="frame"><div class="phone full-red hi">
+      <div class="status"><span>9:41</span><span>●●● 100%</span></div>
+      <div class="body" style="gap:16px;text-align:center">
+        <div style="height:10px"></div>
+        <i data-i="xoct" style="width:100px;height:100px;margin:0 auto;display:block"></i>
+        <div style="font-size:44px;font-weight:800">रुकिए!</div>
+        <p style="font-size:22px;font-weight:700">यह धोखे वाली कॉल है।</p>
+        <div class="instr">फ़ोन अभी काटें। असली पुलिस कभी फ़ोन पर पैसे नहीं माँगती।</div>
+        <div class="reading"><i data-i="speaker"></i>पढ़कर सुना रहे हैं…</div>
+        <div class="grow"></div>
+        <div class="btn b-white" style="font-size:22px;min-height:66px"><i data-i="phone" style="transform:rotate(135deg)"></i>फ़ोन काटें</div>
+        <div class="btn b-ghostw"><i data-i="phone"></i>राहुल को कॉल करें</div>
+        <p style="font-size:17px;opacity:.95">आपके परिवार को बता दिया गया है।</p>
+      </div>
+    </div><div class="label">S5 · Warning: High risk (Hindi)</div></div>
+
+  </div>
+</section>
+
+<!-- =============== SHEET 4: FAKE VOICE + FAMILY CALLING + RECOVERY =============== -->
+<section class="sheet" id="sheet4">
+  <h2>4 · Senior: Fake family voice, family calling in, and recovery help</h2>
+  <div class="sub">Recovery help can be opened from Settings, from a Scam result, or by family from an alert.</div>
+  <div class="row">
+
+    <div class="frame"><div class="phone full-red">
+      <div class="status"><span>9:41</span><span>●●● 100%</span></div>
+      <div class="body" style="gap:16px;text-align:center">
+        <div style="height:10px"></div>
+        <i data-i="user" style="width:90px;height:90px;margin:0 auto;display:block"></i>
+        <div style="font-size:34px;font-weight:800;line-height:1.2">Is this really Rahul?</div>
+        <p style="font-size:19px">The caller said "Papa, it's me, I'm in trouble."</p>
+        <div class="instr">This call is not from Rahul's saved number. Hang up and call him directly.</div>
+        <div class="grow"></div>
+        <div class="btn b-white" style="font-size:20px;min-height:66px;flex-direction:column;gap:0"><span style="display:flex;gap:10px;align-items:center"><i data-i="phone"></i>Call Rahul's real number</span><small style="font-size:16px;font-weight:600">+91 98200 12345</small></div>
+        <div class="btn b-ghostw"><i data-i="phone" style="transform:rotate(135deg)"></i>Hang up</div>
+      </div>
+    </div><div class="label">S6 · Fake voice check</div></div>
+
+    <div class="frame"><div class="phone full-red">
+      <div class="status"><span>9:41</span><span>●●● 100%</span></div>
+      <div class="body" style="gap:16px;text-align:center">
+        <div style="height:10px"></div>
+        <i data-i="xoct" style="width:100px;height:100px;margin:0 auto;display:block"></i>
+        <div style="font-size:44px;font-weight:800">STOP</div>
+        <p style="font-size:22px;font-weight:700">This is a scam call.</p>
+      </div>
+      <div class="dim"></div>
+      <div class="sheetpop">
+        <div style="display:flex;gap:14px;align-items:center"><div class="avatar" style="width:64px;height:64px;font-size:28px">R</div><div><b style="font-size:24px;line-height:1.2;display:block">Rahul is calling to help you</b></div></div>
+        <p class="muted">Hang up the other call first. Then answer Rahul.</p>
+        <div class="btn b-safe" style="min-height:66px;font-size:22px"><i data-i="phone"></i>Answer Rahul</div>
+      </div>
+    </div><div class="label">S7 · Family calling to help<small>Shown on top of the warning screen</small></div></div>
+
+    <div class="frame"><div class="phone">
+      <div class="status"><span>9:41</span><span>●●● 100%</span></div>
+      <div class="body" style="gap:12px">
+        <div class="topbar"><div class="iconbtn"><i data-i="back"></i></div><div class="t">Lost money? Do this now</div></div>
+        <div class="step"><div class="n">1</div><div class="c"><b>Call the cyber helpline</b><div class="btn b-danger mini"><i data-i="phone"></i>Call 1930</div></div></div>
+        <div class="step"><div class="n">2</div><div class="c"><b>Complain online</b><div class="btn b-outline mini"><i data-i="globe"></i>Open cybercrime.gov.in</div></div></div>
+        <div class="step"><div class="n">3</div><div class="c"><b>Call your bank. Ask them to freeze your account.</b><div class="btn b-outline mini">What to say</div></div></div>
+        <div class="step"><div class="n">4</div><div class="c"><b>Keep proof</b><span style="font-size:17px;color:var(--muted)">Screenshots, phone numbers, transaction IDs.</span></div></div>
+        <div class="grow"></div>
+        <div class="btn b-primary"><i data-i="file"></i>See my complaint</div>
+      </div>
+    </div><div class="label">S8 · Recovery help checklist</div></div>
+
+    <div class="frame"><div class="phone">
+      <div class="status"><span>9:41</span><span>●●● 100%</span></div>
+      <div class="body" style="gap:14px">
+        <div class="topbar"><div class="iconbtn"><i data-i="back"></i></div><div class="t">Your complaint</div></div>
+        <p class="muted">We wrote this for you. Copy it into the complaint form.</p>
+        <div class="card" style="font-size:17px;line-height:1.5;background:#F9FAFB">On 5 Nov 2026 at 4:12 PM, I got a call from +91 70XXX 41207. The caller said he was a CBI officer and said I was under "digital arrest". He told me to pay ₹50,000 to ramesh@okaxis as a security deposit. I did not know it was a scam…</div>
+        <div class="info"><i data-i="info"></i><span>Check the details. Add anything that is missing.</span></div>
+        <div class="grow"></div>
+        <div class="btn b-primary"><i data-i="copy"></i>Copy complaint</div>
+      </div>
+    </div><div class="label">S8 · Complaint draft<small>Filled from the alert: date, time, number, amount</small></div></div>
+
+    <div class="frame"><div class="phone">
+      <div class="status"><span>9:41</span><span>●●● 100%</span></div>
+      <div class="body" style="gap:14px">
+        <div class="topbar"><div class="iconbtn"><i data-i="back"></i></div><div class="t">What to tell the bank</div></div>
+        <p class="muted">Read this out when the bank picks up.</p>
+        <div class="card" style="font-size:20px;line-height:1.55;font-weight:600">"My name is Kamla Sharma. I lost money to a scam today. Please freeze my account right now and block my cards. I want to report a fraud transaction of ₹50,000."</div>
+        <div class="info"><i data-i="lock"></i><span>The bank will never ask for your OTP or PIN. Do not share them.</span></div>
+        <div class="grow"></div>
+        <div class="btn b-outline"><i data-i="speaker"></i>Read aloud</div>
+      </div>
+    </div><div class="label">S8 · Bank call script</div></div>
+
+  </div>
+</section>
+
+<!-- =============== SHEET 5: PAYMENTS =============== -->
+<section class="sheet" id="sheet5">
+  <h2>5 · Senior: Pay (practice UPI) and family approval</h2>
+  <div class="sub">Payments above the limit wait for family. No answer in 15 minutes = cancelled.</div>
+  <div class="row">
+
+    <div class="frame"><div class="phone">
+      <div class="status"><span>9:41</span><span>●●● 100%</span></div>
+      <div class="body" style="gap:14px">
+        <h1>Pay someone</h1>
+        <div class="field"><div class="l">UPI ID</div><div class="input">ramesh@okaxis</div></div>
+        <div class="field"><div class="l">Amount</div><div class="input" style="font-size:26px;font-weight:800">₹ 50,000</div></div>
+        <div class="field"><div class="l">What is it for?</div><div class="input">Security deposit</div></div>
+        <div class="info"><i data-i="users"></i><span>Payments above <b>₹5,000</b> need a "yes" from your family.</span></div>
+        <div class="grow"></div>
+        <div class="btn b-primary">Pay ₹50,000</div>
+      </div>
+      <div class="tabs"><div class="tab"><i data-i="home"></i><span>Home</span></div><div class="tab"><i data-i="search"></i><span>Check</span></div><div class="tab on"><i data-i="rupee"></i><span>Pay</span></div><div class="tab"><i data-i="settings"></i><span>Settings</span></div></div>
+    </div><div class="label">S9 · Pay (practice UPI screen)</div></div>
+
+    <div class="frame"><div class="phone">
+      <div class="status"><span>9:41</span><span>●●● 100%</span></div>
+      <div class="body" style="gap:16px;text-align:center">
+        <div style="height:16px"></div>
+        <i data-i="clock" style="width:84px;height:84px;color:var(--primary);margin:0 auto;display:block"></i>
+        <h1>Waiting for approval from your family</h1>
+        <p class="muted">We asked Rahul and Priya to check this payment.</p>
+        <div class="card" style="text-align:left"><div style="font-size:32px;font-weight:800">₹50,000</div><p class="muted">to ramesh@okaxis</p></div>
+        <div style="font-size:48px;font-weight:800;color:var(--primary)">14:32</div>
+        <p class="muted" style="margin-top:-10px">minutes left</p>
+        <div class="grow"></div>
+        <div class="btn b-outline">Cancel payment</div>
+      </div>
+    </div><div class="label">S10 · Payment waiting</div></div>
+
+    <div class="frame"><div class="phone">
+      <div class="status"><span>9:41</span><span>●●● 100%</span></div>
+      <div class="body" style="gap:16px;text-align:center">
+        <div style="height:30px"></div>
+        <div class="verdict v-scam"><i data-i="hand" class="big"></i><div class="w" style="font-size:32px">Payment stopped</div>
+          <div class="todo" style="justify-content:center">Your family stopped this payment. Please call them.</div></div>
+        <div class="grow"></div>
+        <div class="btn b-primary"><i data-i="phone"></i>Call Rahul</div>
+        <div class="btn b-outline">Done</div>
+      </div>
+    </div><div class="label">S10 · Payment rejected<small>Same layout for "no answer in 15 minutes"</small></div></div>
+
+    <div class="frame"><div class="phone">
+      <div class="status"><span>9:41</span><span>●●● 100%</span></div>
+      <div class="body" style="gap:16px;text-align:center">
+        <div style="height:30px"></div>
+        <div class="verdict v-safe"><i data-i="checkc" class="big"></i><div class="w" style="font-size:32px">Payment done</div>
+          <p>Rahul said yes. ₹8,000 was sent to the electrician.</p></div>
+        <div class="grow"></div>
+        <div class="btn b-primary">Done</div>
+      </div>
+    </div><div class="label">S10 · Payment approved</div></div>
+
+  </div>
+</section>
+
+<!-- =============== SHEET 6: SENIOR SETTINGS =============== -->
+<section class="sheet" id="sheet6">
+  <h2>6 · Senior: Settings and test mode</h2>
+  <div class="sub">Settings is a short list. Each row opens one simple screen.</div>
+  <div class="row">
+
+    <div class="frame"><div class="phone">
+      <div class="status"><span>9:41</span><span>●●● 100%</span></div>
+      <div class="body" style="gap:4px">
+        <h1 style="margin-bottom:8px">Settings</h1>
+        <div class="rowitem"><i data-i="globe" class="ic"></i><div class="tx"><b>Language</b><span>English</span></div><i data-i="chev" class="ch"></i></div>
+        <div class="rowitem"><i data-i="users" class="ic"></i><div class="tx"><b>My family</b><span>2 people linked</span></div><i data-i="chev" class="ch"></i></div>
+        <div class="rowitem"><i data-i="eye" class="ic"></i><div class="tx"><b>What family can see</b><span>Standard</span></div><i data-i="chev" class="ch"></i></div>
+        <div class="rowitem"><i data-i="phone" class="ic"></i><div class="tx"><b>Trusted numbers</b><span>2 saved</span></div><i data-i="chev" class="ch"></i></div>
+        <div class="rowitem"><i data-i="rupee" class="ic"></i><div class="tx"><b>Payment limit</b><span>₹5,000 · set by your family</span></div><i data-i="lock" class="ch"></i></div>
+        <div class="rowitem"><i data-i="buoy" class="ic"></i><div class="tx"><b>Lost money? Get help</b><span>Steps to follow</span></div><i data-i="chev" class="ch"></i></div>
+        <div class="rowitem" style="border:none"><i data-i="user" class="ic"></i><div class="tx"><b>Log out</b></div></div>
+      </div>
+      <div class="tabs"><div class="tab"><i data-i="home"></i><span>Home</span></div><div class="tab"><i data-i="search"></i><span>Check</span></div><div class="tab"><i data-i="rupee"></i><span>Pay</span></div><div class="tab on"><i data-i="settings"></i><span>Settings</span></div></div>
+    </div><div class="label">S11 · Settings</div></div>
+
+    <div class="frame"><div class="phone">
+      <div class="status"><span>9:41</span><span>●●● 100%</span></div>
+      <div class="body" style="gap:12px">
+        <div class="topbar"><div class="iconbtn"><i data-i="back"></i></div><div class="t">My family</div></div>
+        <div class="person"><div class="avatar">R</div><div class="tx"><b>Rahul (son)</b><span>+91 98200 12345</span></div><div class="linkbtn">Remove</div></div>
+        <div class="person"><div class="avatar">P</div><div class="tx"><b>Priya (daughter)</b><span>+91 99300 67890</span></div><div class="linkbtn">Remove</div></div>
+        <div class="card" style="background:var(--primary-soft);border-color:var(--primary);display:flex;flex-direction:column;gap:6px;text-align:center;margin-top:6px">
+          <b style="font-size:20px">Add family</b>
+          <p style="font-size:17px">Read this code to them. They type it in their Rakshak app.</p>
+          <div class="code">482 913</div>
+          <p class="muted" style="font-size:16px">Code works for 24 hours</p>
+        </div>
+        <div class="grow"></div>
+        <div class="btn b-primary"><i data-i="share"></i>Send code on WhatsApp</div>
+        <p class="center muted" style="font-size:16px">You can add 3 more people.</p>
+      </div>
+    </div><div class="label">S11 · My family + invite code<small>"Remove" asks "Are you sure?" first</small></div></div>
+
+    <div class="frame"><div class="phone">
+      <div class="status"><span>9:41</span><span>●●● 100%</span></div>
+      <div class="body" style="gap:12px">
+        <div class="topbar"><div class="iconbtn"><i data-i="back"></i></div><div class="t">What family can see</div></div>
+        <div class="choice"><div class="radio"></div><div><b>Basic</b><span>Only that there was a danger, and how serious.</span></div></div>
+        <div class="choice on"><div class="radio"></div><div><b>Standard (best for most)</b><span>Also what kind of scam it was, with a short note.</span></div></div>
+        <div class="choice"><div class="radio"></div><div><b>Full</b><span>Also the full message or what was said on the call.</span></div></div>
+        <div class="info"><i data-i="info"></i><span>Changes work right away.</span></div>
+      </div>
+    </div><div class="label">S11 · Privacy level</div></div>
+
+    <div class="frame"><div class="phone">
+      <div class="status"><span>9:41</span><span>●●● 100%</span></div>
+      <div class="body" style="gap:12px">
+        <div class="topbar"><div class="iconbtn"><i data-i="back"></i></div><div class="t">Trusted numbers</div></div>
+        <p class="muted">If someone calls saying they are family, we check it against these numbers.</p>
+        <div class="person"><div class="avatar">R</div><div class="tx"><b>Rahul</b><span>+91 98200 12345</span></div><div class="linkbtn" style="color:var(--primary);border-color:var(--primary)">Edit</div></div>
+        <div class="person"><div class="avatar">P</div><div class="tx"><b>Priya</b><span>+91 99300 67890</span></div><div class="linkbtn" style="color:var(--primary);border-color:var(--primary)">Edit</div></div>
+        <div class="grow"></div>
+        <div class="btn b-primary"><i data-i="plus"></i>Add a number</div>
+      </div>
+    </div><div class="label">S11 · Trusted family numbers</div></div>
+
+    <div class="frame"><div class="phone">
+      <div class="status"><span>9:41</span><span>●●● 100%</span></div>
+      <div class="body" style="gap:10px">
+        <div class="topbar"><div class="iconbtn"><i data-i="back"></i></div><div class="t">Test mode</div></div>
+        <p class="muted" style="font-size:17px">Practice scenes for demos. Nothing real happens.</p>
+        <div class="btn b-outline" style="justify-content:flex-start;font-size:18px">1 · Fake CBI "digital arrest" call</div>
+        <div style="display:flex;gap:8px;margin-top:-4px"><div class="pill p-safe" style="background:var(--primary);color:#fff">English</div><div class="pill hi" style="border:2px solid var(--primary);color:var(--primary)">हिन्दी</div></div>
+        <div class="btn b-outline" style="justify-content:flex-start;font-size:18px">2 · "Family in trouble" call</div>
+        <div class="btn b-outline" style="justify-content:flex-start;font-size:18px">3 · Fake bank SMS with link</div>
+        <div class="btn b-outline" style="justify-content:flex-start;font-size:18px">4 · Fake KYC app file (.apk)</div>
+        <div class="btn b-outline" style="justify-content:flex-start;font-size:18px">5 · ₹50,000 payment after scam call</div>
+        <div class="grow"></div>
+        <div class="btn b-primary" style="background:#6B7280">Reset demo</div>
+      </div>
+    </div><div class="label">S12 · Hidden test mode<small>Opens after tapping the logo 5 times</small></div></div>
+
+  </div>
+</section>
+
+<!-- =============== SHEET 7: FAMILY =============== -->
+<section class="sheet" id="sheet7">
+  <h2>7 · Family screens</h2>
+  <div class="sub">Tabs: Home · Settings. Alerts and payment requests open from push notifications or from Home.</div>
+  <div class="row">
+
+    <div class="frame"><div class="phone">
+      <div class="status"><span>9:41</span><span>●●● 100%</span></div>
+      <div class="notif"><div class="avatar" style="width:44px;height:44px;background:var(--scam);color:#fff"><i data-i="shieldcheck" style="width:26px;height:26px"></i></div><div><b style="font-size:17px">Rakshak · now</b><div style="font-size:17px;line-height:1.35">Kamla may be on a scam call right now.</div></div></div>
+      <div class="body" style="gap:14px">
+        <div style="height:86px"></div>
+        <div class="topbar"><div class="logo"><i data-i="shieldcheck"></i>Rakshak</div></div>
+        <div class="card" style="border:3px solid var(--scam);display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;gap:12px;align-items:center"><div class="avatar">K</div><div style="flex:1"><b style="font-size:20px">Kamla (Mummy)</b></div><span class="pill p-alert"><i data-i="alert"></i>Alert</span></div>
+          <p>Possible fake police call · 2 min ago</p>
+          <div class="btn b-danger" style="min-height:56px">See alert</div>
+        </div>
+        <div class="card" style="display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;gap:12px;align-items:center"><div class="avatar">S</div><div style="flex:1"><b style="font-size:20px">Suresh (Papa)</b></div><span class="pill p-safe"><i data-i="checkc"></i>Safe</span></div>
+          <p class="muted">Last: a message was safe · Yesterday</p>
+        </div>
+      </div>
+      <div class="tabs"><div class="tab on"><i data-i="home"></i><span>Home</span></div><div class="tab"><i data-i="settings"></i><span>Settings</span></div></div>
+    </div><div class="label">F2 · Family Home<small>Push notification shown at top</small></div></div>
+
+    <div class="frame"><div class="phone">
+      <div class="status"><span>9:41</span><span>●●● 100%</span></div>
+      <div class="body" style="gap:12px">
+        <div class="topbar"><div class="iconbtn"><i data-i="back"></i></div><div class="t">Alert</div></div>
+        <div class="status-card sc-alert" style="padding:14px 16px"><i data-i="xoct" style="width:52px;height:52px"></i><div><div class="h" style="font-size:24px">High risk</div><div class="s">Kamla may be on a scam call.</div></div></div>
+        <div class="kv"><span>What happened</span><b>Fake police call ("digital arrest")</b></div>
+        <div class="kv"><span>When</span><b>Today, 4:12 PM</b></div>
+        <div class="kv" style="border:none"><span>Short note</span><b style="font-weight:600;font-size:18px">Caller said he was from CBI and asked for ₹50,000 as a "security deposit".</b></div>
+        <div class="grow"></div>
+        <div class="btn b-safe"><i data-i="phone"></i>Call Kamla</div>
+        <div class="btn b-outline"><i data-i="users"></i>Join call</div>
+        <div class="btn b-outline" style="color:var(--ink);border-color:#9CA3AF"><i data-i="checkc"></i>Mark as resolved</div>
+      </div>
+    </div><div class="label">F3 · Alert detail<small>"Join call" falls back to a normal call with a note if 3-way is not possible</small></div></div>
+
+    <div class="frame"><div class="phone">
+      <div class="status"><span>9:41</span><span>●●● 100%</span></div>
+      <div class="body" style="gap:10px">
+        <div class="topbar"><div class="iconbtn"><i data-i="back"></i></div><div class="t">Approve payment?</div></div>
+        <div class="redbanner"><i data-i="alert"></i>This payment was started shortly after a possible scam call.</div>
+        <div class="center" style="padding:6px 0"><div class="amount">₹50,000</div><p class="muted">Kamla wants to pay</p></div>
+        <div class="kv"><span>To</span><b>ramesh@okaxis</b></div>
+        <div class="kv"><span>Reason she typed</span><b>Security deposit</b></div>
+        <div class="kv" style="border:none"><span>Scam alert in last 2 hours</span><b style="color:var(--scam)">Yes · 4:12 PM</b></div>
+        <p class="center muted" style="font-size:17px">Cancels on its own in 14:02</p>
+        <div class="grow"></div>
+        <div class="btn b-danger" style="min-height:66px;font-size:22px"><i data-i="hand"></i>Reject</div>
+        <div class="btn b-outline" style="color:var(--safe);border-color:var(--safe)"><i data-i="checkc"></i>Approve</div>
+      </div>
+    </div><div class="label">F4 · Payment approval<small>Reject is the bigger button when there was a recent scam alert</small></div></div>
+
+    <div class="frame"><div class="phone">
+      <div class="status"><span>9:41</span><span>●●● 100%</span></div>
+      <div class="body" style="gap:10px">
+        <h1>Settings</h1>
+        <b style="font-size:20px;margin-top:4px">Payment limit</b>
+        <div class="card" style="display:flex;flex-direction:column;gap:8px;padding:12px 14px"><b style="font-size:18px">Kamla (Mummy)</b><div class="stepper"><div class="sb">−</div><div class="val">₹5,000</div><div class="sb">+</div></div></div>
+        <div class="card" style="display:flex;flex-direction:column;gap:8px;padding:12px 14px"><b style="font-size:18px">Suresh (Papa)</b><div class="stepper"><div class="sb">−</div><div class="val">₹10,000</div><div class="sb">+</div></div></div>
+        <b style="font-size:20px;margin-top:6px">Notifications</b>
+        <div class="rowitem" style="min-height:58px"><div class="tx"><b>Scam alerts</b><span>Always on</span></div><div class="toggle"></div></div>
+        <div class="rowitem" style="min-height:58px"><div class="tx"><b>Payment requests</b></div><div class="toggle"></div></div>
+        <div class="rowitem" style="min-height:58px;border:none"><div class="tx"><b>Language</b><span>English</span></div><i data-i="chev" class="ch"></i></div>
+      </div>
+      <div class="tabs"><div class="tab"><i data-i="home"></i><span>Home</span></div><div class="tab on"><i data-i="settings"></i><span>Settings</span></div></div>
+    </div><div class="label">F5 · Family Settings</div></div>
+
+  </div>
+</section>
+
+<script>
+// Tiny inline icon set (stroke icons). <i data-i="name"> gets replaced by an SVG.
+const P = {
+  shield:'<path d="M12 2l8 3v6c0 5-3.5 9.5-8 11-4.5-1.5-8-6-8-11V5z"/>',
+  shieldcheck:'<path d="M12 2l8 3v6c0 5-3.5 9.5-8 11-4.5-1.5-8-6-8-11V5z"/><path d="M8.5 12l2.5 2.5 4.5-5"/>',
+  alert:'<path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/>',
+  xoct:'<path d="M7.9 2h8.2L22 7.9v8.2L16.1 22H7.9L2 16.1V7.9z"/><path d="M15 9l-6 6M9 9l6 6"/>',
+  checkc:'<circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/>',
+  phone:'<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/>',
+  msg:'<path d="M21 12a8 8 0 0 1-11.6 7.1L3 21l1.9-6.4A8 8 0 1 1 21 12z"/>',
+  mic:'<rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v4"/>',
+  speaker:'<path d="M11 5L6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/>',
+  home:'<path d="M3 10l9-7 9 7v10a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/>',
+  search:'<circle cx="11" cy="11" r="7"/><path d="M21 21l-5-5"/>',
+  rupee:'<path d="M6 3h12M6 8h12M6 13l8.5 8M6 13h3c6.7 0 6.7-10 0-10"/>',
+  settings:'<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>',
+  users:'<circle cx="9" cy="7" r="4"/><path d="M2 21v-1a6 6 0 0 1 6-6h2a6 6 0 0 1 6 6v1"/><path d="M16 3.1a4 4 0 0 1 0 7.8M22 21v-1a6 6 0 0 0-4-5.6"/>',
+  image:'<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/>',
+  lock:'<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
+  clock:'<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>',
+  chev:'<path d="M9 6l6 6-6 6"/>',
+  back:'<path d="M15 6l-6 6 6 6"/>',
+  user:'<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',
+  file:'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/>',
+  globe:'<circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/>',
+  copy:'<rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>',
+  plus:'<path d="M12 5v14M5 12h14"/>',
+  eye:'<path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+  share:'<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/>',
+  info:'<circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>',
+  clip:'<rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>',
+  buoy:'<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="M4.9 4.9l4.3 4.3M14.8 14.8l4.3 4.3M14.8 9.2l4.3-4.3M4.9 19.1l4.3-4.3"/>',
+  hand:'<path d="M18 11V6a2 2 0 0 0-4 0v5M14 10V4a2 2 0 0 0-4 0v6M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.9-6-2.4l-3.6-3.6a2 2 0 0 1 2.8-2.8L7 15"/>'
+};
+document.querySelectorAll('i[data-i]').forEach(el=>{
+  const s=document.createElementNS('http://www.w3.org/2000/svg','svg');
+  s.setAttribute('viewBox','0 0 24 24');s.setAttribute('fill','none');s.setAttribute('stroke','currentColor');
+  s.setAttribute('stroke-width','2');s.setAttribute('stroke-linecap','round');s.setAttribute('stroke-linejoin','round');
+  s.innerHTML=P[el.dataset.i]||'';
+  if(el.getAttribute('style')) s.setAttribute('style',el.getAttribute('style'));
+  if(el.className) s.setAttribute('class',el.className);
+  s.style.flex='none';
+  el.replaceWith(s);
+});
+</script>
+</body>
+</html>
