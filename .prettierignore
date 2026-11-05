@@ -1,0 +1,4 @@
+node_modules
+design
+functions/lib
+**/package-lock.json

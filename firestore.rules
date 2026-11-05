@@ -1,0 +1,132 @@
+rules_version = '2';
+
+// Rakshak Firestore security rules.
+//
+// Main idea: a Family member can only read data for Seniors they are linked to.
+// Links are stored as links/{seniorId}_{familyId}, so "is X linked to Y?" is a
+// single document lookup.
+//
+// Cloud Functions use the Admin SDK and are NOT limited by these rules; they
+// check permissions in code instead (see functions/src).
+//
+// Phase 1 covers: users, links, settings, invites.
+// Phase 3 adds alerts (with fullContent only readable on "Full" privacy).
+// Phase 5 adds payments.
+// Anything not listed here is denied.
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ---------- Helpers ----------
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isSelf(uid) {
+      return signedIn() && request.auth.uid == uid;
+    }
+
+    function linkExists(seniorId, familyId) {
+      return exists(/databases/$(database)/documents/links/$(seniorId + '_' + familyId));
+    }
+
+    // The signed-in user is a Family member linked to this Senior.
+    function isFamilyOf(seniorId) {
+      return signedIn() && linkExists(seniorId, request.auth.uid);
+    }
+
+    // The signed-in user is the Senior linked to this Family member.
+    function isSeniorOf(familyId) {
+      return signedIn() && linkExists(request.auth.uid, familyId);
+    }
+
+    // Only these fields may change in an update.
+    function onlyChanges(fields) {
+      return request.resource.data.diff(resource.data).affectedKeys().hasOnly(fields);
+    }
+
+    // ---------- users/{uid} ----------
+    // Profile: name, phone, role, language, pushToken.
+    match /users/{uid} {
+      // You, and anyone you are linked with (either direction), can read it.
+      allow read: if isSelf(uid) || isFamilyOf(uid) || isSeniorOf(uid);
+
+      // You can create your own profile once, with your verified phone number.
+      allow create: if isSelf(uid)
+        && request.resource.data.keys().hasOnly(['id', 'name', 'phone', 'role', 'language', 'pushToken', 'createdAt'])
+        && request.resource.data.id == uid
+        && request.resource.data.phone == request.auth.token.phone_number
+        && request.resource.data.role in ['senior', 'family']
+        && request.resource.data.language in ['en', 'hi']
+        && request.resource.data.name is string
+        && request.resource.data.name.size() <= 60
+        && request.resource.data.pushToken == null
+        && request.resource.data.createdAt == request.time;
+
+      // You can change your name, language and push token. Role and phone are fixed.
+      allow update: if isSelf(uid)
+        && onlyChanges(['name', 'language', 'pushToken'])
+        && request.resource.data.language in ['en', 'hi']
+        && request.resource.data.name is string
+        && request.resource.data.name.size() <= 60;
+
+      allow delete: if false;
+    }
+
+    // ---------- links/{seniorId}_{familyId} ----------
+    match /links/{linkId} {
+      allow read: if signedIn()
+        && (resource.data.seniorId == request.auth.uid || resource.data.familyId == request.auth.uid);
+
+      // Only the linkWithCode Cloud Function creates links (it checks the
+      // invite code and the 5-family limit).
+      allow create, update: if false;
+
+      // The Senior can remove a Family member at any time. A Family member can
+      // also unlink themselves.
+      allow delete: if signedIn()
+        && (resource.data.seniorId == request.auth.uid || resource.data.familyId == request.auth.uid);
+    }
+
+    // ---------- settings/{seniorId} ----------
+    // privacyLevel, paymentLimit, trustedNumbers.
+    match /settings/{seniorId} {
+      allow read: if isSelf(seniorId) || isFamilyOf(seniorId);
+
+      // Created with the Senior's profile, with default values only.
+      allow create: if isSelf(seniorId)
+        && request.resource.data.keys().hasOnly(['seniorId', 'privacyLevel', 'paymentLimit', 'trustedNumbers'])
+        && request.resource.data.seniorId == seniorId
+        && request.resource.data.privacyLevel == 'standard'
+        && request.resource.data.paymentLimit == 5000
+        && request.resource.data.trustedNumbers == [];
+
+      // The Senior controls privacy and trusted numbers.
+      // Linked Family members control the payment limit (the Senior can only view it).
+      allow update: if
+        (isSelf(seniorId)
+          && onlyChanges(['privacyLevel', 'trustedNumbers'])
+          && request.resource.data.privacyLevel in ['basic', 'standard', 'full']
+          && request.resource.data.trustedNumbers is list
+          && request.resource.data.trustedNumbers.size() <= 10)
+        ||
+        (isFamilyOf(seniorId)
+          && onlyChanges(['paymentLimit'])
+          && request.resource.data.paymentLimit is int
+          && request.resource.data.paymentLimit >= 0
+          && request.resource.data.paymentLimit <= 1000000);
+
+      allow delete: if false;
+    }
+
+    // ---------- invites/{code} and rateLimits/{id} ----------
+    // Server only (Cloud Functions). The app never reads these directly.
+    match /invites/{code} {
+      allow read, write: if false;
+    }
+    match /rateLimits/{id} {
+      allow read, write: if false;
+    }
+  }
+}
